@@ -1,5 +1,5 @@
 # tb.lx-code-challenge
-Web Service to query Dublin bus GPS sample data
+Web Service to query the [Dublin bus GPS sample data](https://data.gov.ie/dataset/dublin-bus-gps-sample-data-from-dublin-city-council-insight-project). Part of tb.lx backend code challenge.
 
 ## Pre-requisites
 - docker
@@ -12,12 +12,12 @@ The sample data resides in ElasticSearch.
 
 Launch Elastic Stack (elasticsearch, logstash) with `docker-compose up`.
 
-It might take a few minutes to start the stack and it will also import the sample data in `sample-data/siri.20121125.csv` to ElasticSearch.
+It might take a few minutes to start the stack and it will also import the sample Dublin Bus data in `sample-data/siri.20121125.csv` to ElasticSearch.
 
 Stop and erase data related to Elastic Stack with `docker-compose down -v`
 
 ### Web Server
-http4s was the Web Server chosen to serve the requests. It listens on port `8080`.
+[http4s](https://github.com/http4s/http4s) was the Web Server chosen to serve the requests. It listens on port `8080`.
 
 Type `sbt run` in a terminal while in the project's root directory to start it.
 
