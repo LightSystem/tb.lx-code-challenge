@@ -21,6 +21,9 @@ Stop and erase data related to Elastic Stack with `docker-compose down -v`
 
 Type `sbt run` in a terminal while in the project's root directory to start it.
 
+## API Definition
+API is defined in `src/main/resources/api-definition.raml`, load it into your favorite REST client.
+
 ## Example usage
 ### Get running Operators for a time frame
 POST `/operators/list`
@@ -62,6 +65,6 @@ POST `/vehicles/trace`
 {
   "startTime": "2012-11-25T00:00:00",
   "endTime": "2012-11-25T07:00:00",
-  "vehicleID": "33234"
+  "vehicleID": 33234
 }
 ```

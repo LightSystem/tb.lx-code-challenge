@@ -1,0 +1,62 @@
+#%RAML 1.0
+title: Dublin Bus
+baseUri: http://localhost:8080
+mediaType: application/json
+
+resourceTypes:
+  jsonParser:
+    post:
+      responses:
+        200:
+          body:
+        422:
+          description: Bad input. Could not parse JSON body.
+
+types:
+  TimeFrameFilter:
+    type: object
+    properties:
+      startTime: datetime
+      endTime: datetime
+  VehicleFilter:
+    type: object
+    properties:
+      startTime: datetime
+      endTime: datetime
+      operator: string
+      atStop?: boolean
+  VehicleTraceFilter:
+    type: object
+    properties:
+      startTime: datetime
+      endTime: datetime
+      vehicleID: integer
+
+/operators/list:
+  type: jsonParser
+  post:
+    body:
+      type: TimeFrameFilter
+      example:
+        startTime: "2012-11-25T06:00:00"
+        endTime: "2012-11-25T08:00:00"
+
+/vehicles/list:
+  type: jsonParser
+  post:
+    body:
+      type: VehicleFilter
+      example:
+        startTime: "2012-11-25T03:00:00"
+        endTime: "2012-11-25T07:00:00"
+        operator: "SL"
+
+/vehicles/trace:
+  type: jsonParser
+  post:
+    body:
+      type: VehicleTraceFilter
+      example:
+        startTime: "2012-11-25T00:00:00"
+        endTime: "2012-11-25T07:00:00"
+        vehicleID: "33234"
